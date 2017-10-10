@@ -15,24 +15,20 @@ fun buildHTML5(prettyPint: Boolean = true, block: HTML.() -> Unit): String {
 fun getHomePage(): String {
     return buildHTML5 {
         head {
-            link(rel = "icon", type = ContentType.Image.PNG.toString(), href = "/favicon.ico")
-            link(rel = "shortcut icon", type = ContentType.Image.PNG.toString(), href = "/favicon.ico")
-
-            meta { charset = "UTF-8" }
-            meta(name = "author", content = "Sierisimo Sier")
-            meta(name = "keywords", content = arrayOf("KUG", "Kotlin", "Lambda").joinToString(","))
-            meta(name = "viewport", content = "width=device-width, initial-scale=1.0")
+            basicInfo()
         }
         body {
 
-
-            p {
-
-            }
-
-            img(alt = "GDG", src = "/static/gdg.png")
-            img(alt = "GDG", src = "/gdg.png")
-            img(alt = "GDG", src = "gdg.png")
         }
     }
+}
+
+fun HEAD.basicInfo() {
+    link(rel = "icon", type = ContentType.Image.PNG.toString(), href = "/content/favicon.ico")
+    link(rel = "shortcut icon", type = ContentType.Image.PNG.toString(), href = "/content/favicon.ico")
+
+    meta { charset = "UTF-8" }
+    meta(name = "author", content = "Sierisimo Sier")
+    meta(name = "keywords", content = arrayOf("KUG", "Kotlin", "Lambda").joinToString(","))
+    meta(name = "viewport", content = "width=device-width, initial-scale=1.0")
 }
