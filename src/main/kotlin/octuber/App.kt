@@ -3,6 +3,7 @@ package octuber
 import octuber.content.getHomePage
 import org.jetbrains.ktor.application.Application
 import org.jetbrains.ktor.application.install
+import org.jetbrains.ktor.content.default
 import org.jetbrains.ktor.content.files
 import org.jetbrains.ktor.content.static
 import org.jetbrains.ktor.content.staticRootFolder
@@ -20,7 +21,21 @@ fun Application.main() {
     routing {
         static("content") {
             staticRootFolder = File("./web")
+
             files("img")
+            files("css")
+            files("js")
+            files("fonts")
+        }
+        static("/demo") {
+            staticRootFolder = File("./web")
+
+            files("img")
+            files("css")
+            files("js")
+            files("fonts")
+
+            default("demo.html")
         }
         get("/") {
             call.respondText(getHomePage(), ContentType.Text.Html)
